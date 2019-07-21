@@ -1,41 +1,14 @@
 version: '3.5'
 
 services:
-  boilerplatejs_host:
-    image: vitruviantech/boilerplatejs:${VERSION:-latest}
+  app:
+    image: dchevell/jira-software
     restart: unless-stopped
-    depends_on:
-      - boilerplatejs_data
     volumes:
-      # Environment
-      - ./.env:/app/.env
-      - ./.ssh:/app/.ssh
-      # Logs
-      - ./log:/app/log
-      # Dependencies
-      - /app/node_modules
-      - /app/.npm
-      # Bundle Syncing
-      - /app/.git
-      # Development Bundles
-      - ${BUNDLE_0:-.bundles}:/bundles/0
-      - ${BUNDLE_1:-.bundles}:/bundles/1
-      - ${BUNDLE_2:-.bundles}:/bundles/2
-      - ${BUNDLE_3:-.bundles}:/bundles/3
-      - ${BUNDLE_4:-.bundles}:/bundles/4
-      - ${BUNDLE_5:-.bundles}:/bundles/5
-      - ${BUNDLE_6:-.bundles}:/bundles/6
-      - ${BUNDLE_7:-.bundles}:/bundles/7
-      - ${BUNDLE_8:-.bundles}:/bundles/8
-      - ${BUNDLE_9:-.bundles}:/bundles/9
-    env_file:
-      - .env
+      - /var/atlassian/application-data/jira
     environment:
-      CONTAINER: 1
-      PORT: 80
-      CLEAN: ${CLEAN:-}
-      LOG_LEVEL: ${LOG_LEVEL:-error}
-      DB_HOST: ${DB_HOST:-boilerplatejs_data}
+      CATALINA_CONNECTOR_SCHEME: ${CATALINA_CONNECTOR_SCHEME:-http}
+      CATALINA_CONNECTOR_SECURE: ${CATALINA_CONNECTOR_SECURE:-false}
       VIRTUAL_HOST: ${DOMAIN:-}
       LETSENCRYPT_HOST: ${DOMAIN:-}
       LETSENCRYPT_EMAIL: ${EMAIL:-}
@@ -43,53 +16,11 @@ services:
       options:
         max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
     ports:
-      - "${IP:-0.0.0.0}:${PORT:-8080}:80"
-      - "${IP:-0.0.0.0}:${WEBPACK_PORT:-8081}:${WEBPACK_PORT:-8081}"
-      - "${IP:-0.0.0.0}:${BOILERPLATE_PORT:-8082}:${BOILERPLATE_PORT:-8082}"
+      - "${IP:-0.0.0.0}:${PORT:-8080}:8080"
     networks:
-      boilerplatejs:
+      foxtrot:
         aliases:
-          - boilerplatejs_host
-
-  boilerplatejs_data:
-    image: mariadb
-    restart: unless-stopped
-    volumes:
-      - /var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
-      MYSQL_USER: ${DB_USER:-boilerplate}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
-    logging:
-      options:
-        max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
-    ports:
-      - "${DB_PORT_EXTERNAL:-3306}:3306"
-    networks:
-      boilerplatejs:
-        aliases:
-          - boilerplatejs_data
-
-  boilerplatejs_admin:
-    image: phpmyadmin/phpmyadmin
-    restart: unless-stopped
-    depends_on:
-      - boilerplatejs_data
-    environment:
-      PMA_PORT: ${DB_PORT:-3306}
-      PMA_HOST: ${DB_HOST:-boilerplatejs_data}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
-      MYSQL_USER: ${DB_USER:-boilerplate}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
-    logging:
-      options:
-        max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
-    ports:
-      - "${ADMIN_PORT:-9000}:80"
-    networks:
-      boilerplatejs:
-        aliases:
-          - boilerplatejs_admin
+          - app
 
 networks:
-  boilerplatejs:
+  foxtrot:

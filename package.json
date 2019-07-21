@@ -1,38 +1,20 @@
 {
-  "name": "@boilerplatejs/platform",
-  "description": "App Development Platform for Marketers by VitruvianTech®",
+  "name": "@vitruviantech/foxtrot",
+  "description": "Foxtrot™ Tactical Project Management",
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/VitruvianTech)",
   "license": "BSD-3-Clause",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BoilerplateJS/platform"
+    "url": "https://github.com/VitruvianTech/foxtrot"
   },
   "homepage": "https://vitruvian.tech",
   "keywords": [
-    "react",
-    "isomorphic",
-    "universal",
-    "webpack",
-    "express",
-    "react-hot-reloader",
-    "redux",
-    "babel",
+    "jira",
+    "project management",
+    "foxtrot",
     "VitruvianTech",
-    "Vitruvian Technology, Corp.",
-    "tech",
-    "framework",
-    "web",
-    "cms",
-    "marketing",
-    "theming",
-    "theme",
-    "app",
-    "framework",
-    "platform",
-    "BoilerplateJS",
-    "boilerplate",
-    "js"
+    "Vitruvian Technology, Corp."
   ],
   "engines": {
     "node": "10.13.0"
