@@ -1,0 +1,40 @@
+{
+  "name": "@boilerplatejs/platform",
+  "description": "App Development Platform for Marketers by VitruvianTech®",
+  "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/VitruvianTech)",
+  "license": "BSD-3-Clause",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BoilerplateJS/platform"
+  },
+  "homepage": "https://vitruvian.tech",
+  "keywords": [
+    "react",
+    "isomorphic",
+    "universal",
+    "webpack",
+    "express",
+    "react-hot-reloader",
+    "redux",
+    "babel",
+    "VitruvianTech",
+    "Vitruvian Technology, Corp.",
+    "tech",
+    "framework",
+    "web",
+    "cms",
+    "marketing",
+    "theming",
+    "theme",
+    "app",
+    "framework",
+    "platform",
+    "BoilerplateJS",
+    "boilerplate",
+    "js"
+  ],
+  "engines": {
+    "node": "10.13.0"
+  }
+}

@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.idea/
+.ssh/
+.bundles/
+images/
+log/
+*.iml
+package-lock.json
+npm-debug.log
