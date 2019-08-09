@@ -2,13 +2,25 @@ version: '3.5'
 
 services:
   app:
-    image: dchevell/jira-software
+    image: atlassian/jira-software
     restart: unless-stopped
+    depends_on:
+      - data
     volumes:
       - /var/atlassian/application-data/jira
+      - ./import:/var/atlassian/application-data/jira/import
     environment:
-      CATALINA_CONNECTOR_SCHEME: ${CATALINA_CONNECTOR_SCHEME:-http}
-      CATALINA_CONNECTOR_SECURE: ${CATALINA_CONNECTOR_SECURE:-false}
+      JVM_MINIMUM_MEMORY: 3072m
+      JVM_MAXIMUM_MEMORY: 4096m
+      ATL_PROXY_NAME: ${DOMAIN:-}
+      ATL_PROXY_PORT: ${PROXY_PORT:-}
+      ATL_TOMCAT_SCHEME: ${SCHEME:-http}
+      ATL_TOMCAT_SECURE: ${SECURE:-false}
+      ATL_JDBC_URL: jdbc:postgresql://data/jiradb
+      ATL_JDBC_USER: ${DB_USER:-jira}
+      ATL_JDBC_PASSWORD: ${DB_PASSWORD:-jira}
+      ATL_DB_DRIVER: org.postgresql.Driver
+      ATL_DB_TYPE: postgres72
       VIRTUAL_HOST: ${DOMAIN:-}
       LETSENCRYPT_HOST: ${DOMAIN:-}
       LETSENCRYPT_EMAIL: ${EMAIL:-}
@@ -18,9 +30,31 @@ services:
     ports:
       - "${IP:-0.0.0.0}:${PORT:-8080}:8080"
     networks:
-      foxtrot:
+      net:
         aliases:
-          - app
+          - foxtrot_app
+
+  data:
+    image: postgres:9.4
+    restart: unless-stopped
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER:-jira}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-jira}
+      POSTGRES_DB: jiradb
+      POSTGRES_ENCODING: UNICODE
+      POSTGRES_COLLATE: C
+      POSTGRES_COLLATE_TYPE: C
+    logging:
+      options:
+        max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    networks:
+      net:
+        aliases:
+          - foxtrot_data
 
 networks:
-  foxtrot:
+  net:
