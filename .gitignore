@@ -6,3 +6,5 @@ package-lock.json
 npm-debug.log
 jira/
 !jira/import/
+!jira/plugins/
+!jira/logos/
