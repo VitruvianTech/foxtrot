@@ -51,7 +51,11 @@ services:
   docker_gen:
     image: jwilder/docker-gen:0.7.3
     container_name: foxtrot_docker_gen
-    command: -notify-sighup foxtrot_http -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+    depends_on:
+      - ssl
+      - http
+    entrypoint: /bin/sh -c
+    command: ["/usr/local/bin/docker-gen -notify-sighup foxtrot_http -watch -wait 30s:60s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf"]
     restart: always
     volumes:
       - ${HTTP_VOLUME:-/tmp/nginx}/conf.d:/etc/nginx/conf.d
