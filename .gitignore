@@ -4,7 +4,7 @@
 *.iml
 package-lock.json
 npm-debug.log
-jira/
-!jira/import/
-!jira/plugins/
-!jira/logos/
+jira/*
+!jira/import
+!jira/logos
+!jira/plugins
