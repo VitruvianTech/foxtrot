@@ -7,7 +7,7 @@ services:
     depends_on:
       - data
     volumes:
-      - ./jira:/var/atlassian/application-data/jira
+      - ./jira/dbconfig.xml:/var/atlassian/application-data/jira
     environment:
       JVM_MINIMUM_MEMORY: 3072m
       JVM_MAXIMUM_MEMORY: 4096m
