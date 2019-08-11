@@ -23,6 +23,7 @@ services:
       VIRTUAL_HOST: ${DOMAIN:-}
       LETSENCRYPT_HOST: ${DOMAIN:-}
       LETSENCRYPT_EMAIL: ${EMAIL:-}
+      LETSENCRYPT_TEST: ${DEBUG:-false}
     logging:
       options:
         max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
