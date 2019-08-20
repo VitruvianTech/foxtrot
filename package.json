@@ -3,7 +3,7 @@
   "description": "Foxtrot™ Tactical Project Management",
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/VitruvianTech)",
   "license": "BSD-3-Clause",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/VitruvianTech/foxtrot"
