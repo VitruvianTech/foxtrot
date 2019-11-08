@@ -1,9 +1,9 @@
 {
-  "name": "@vitruviantech/foxtrot",
+  "name": "@fox-zero/jira",
   "description": "FoxZero™ JIRA",
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/fox-zero)",
   "license": "BSD-3-Clause",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/fox-zero/jira"
