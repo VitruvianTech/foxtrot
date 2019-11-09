@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   ssl:
-    image: jrcs/letsencrypt-nginx-proxy-companion:v1.9.1
+    image: jrcs/letsencrypt-nginx-proxy-companion
     restart: always
     depends_on:
       - http
