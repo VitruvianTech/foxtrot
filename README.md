@@ -10,6 +10,8 @@ By default, FoxZero™ JIRA runs on port `8080` on your server.
 
 `[DOMAIN=jira.example.com] [PORT=8080] docker-compose up [-d]`
 
+When setting up the instance, choose Import, and type `foxzero.zip` in the input field.
+
 ## SSL
 
 FoxZero™ JIRA uses Let's Encrypt and Nginx to setup a secure SSL (HTTPS) reverse web proxy.
