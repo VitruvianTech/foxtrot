@@ -1,6 +1,6 @@
 # FoxZero™ JIRA
 
-This Docker setup includes the official Atlassian JIRA Software Docker image with Postgres, along with workflow, add-on, board, and user group configuration necessary to support the FoxZero™ FAST™ product lifecycle management (PLM) methodology.
+This Docker setup includes the official Atlassian JIRA Software Docker image with Postgres, along with pre-configured workflow, add-on, board, and user group settings necessary to support the FoxZero™ FAST™ product lifecycle management (PLM) methodology.
 
 ## Quick Launch
 
